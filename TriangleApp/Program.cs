@@ -1,9 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
 namespace TriangleApp
 {
     internal class TriangleApp
     {
-
         static void Main(string[] args)
         {
 
@@ -43,7 +42,6 @@ namespace TriangleApp
 
             return new Coordinate(x, y);
         }
-        
     }
 }
  
