@@ -1,0 +1,15 @@
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\bin\Debug\net7.0\TriangleApp.exe
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\bin\Debug\net7.0\TriangleApp.deps.json
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\bin\Debug\net7.0\TriangleApp.runtimeconfig.json
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\bin\Debug\net7.0\TriangleApp.dll
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\bin\Debug\net7.0\TriangleApp.pdb
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\TriangleApp.csproj.AssemblyReference.cache
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\TriangleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\TriangleApp.AssemblyInfoInputs.cache
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\TriangleApp.AssemblyInfo.cs
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\TriangleApp.csproj.CoreCompileInputs.cache
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\TriangleApp.dll
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\refint\TriangleApp.dll
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\TriangleApp.pdb
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\TriangleApp.genruntimeconfig.cache
+C:\Users\yyushchenko\RiderProjects\TriangleApp\TriangleApp\obj\Debug\net7.0\ref\TriangleApp.dll
