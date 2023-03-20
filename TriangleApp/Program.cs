@@ -15,7 +15,7 @@ namespace TriangleApp
                 coords[i] = ReadCoordinate(points[i]);
             }
             
-            Triangle t = new Triangle(coords);
+            Triangle t = new Triangle(coords).WithPrecision(0.4);
             
             t.Run();
         }

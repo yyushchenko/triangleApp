@@ -6,13 +6,22 @@ public class Triangle
 {
     private Coordinate[] points;
     private double[] sides;
+    private double delta;
 
     public Triangle(Coordinate[] points)
     {
         this.points = points;
         this.sides = new double[3];
+        this.delta = 0;
 
         CalcTriangleSides();
+    }
+
+    //Use precision in calculations 
+    public Triangle WithPrecision(double v)
+    {
+        this.delta = v;
+        return this;
     }
 
     public void Run()
@@ -125,7 +134,6 @@ public class Triangle
 
     private bool IsEquilateral()
     {
-        double delta = 0.4;
         double max = 0;
         for (int i = 0; i < sides.Length; i++)
         {
@@ -140,7 +148,6 @@ public class Triangle
 
     private bool IsIsosceles()
     {
-        double delta = 0.2;
         int longestIdx = LongestSideIdx();
         int  leg1Idx = Leg1Idx();
         int leg2Idx = Leg2Idx(longestIdx, leg1Idx);
@@ -156,7 +163,6 @@ public class Triangle
 
     private bool IsRight()
     {
-        double delta = 0.4; 
         int hypotenuseIdx = LongestSideIdx();
         int leg1Idx = Leg1Idx();
         int leg2Idx = Leg2Idx(LongestSideIdx(),leg1Idx); 
