@@ -3,7 +3,7 @@ namespace TriangleApp
 {
     internal class TriangleApp
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
 
@@ -17,7 +17,29 @@ namespace TriangleApp
             
             Triangle t = new Triangle(coords).WithPrecision(0.4);
             
-            t.Run();
+            Run(t);
+        }
+
+        private static void Run(Triangle t)
+        {
+        
+            Console.Write("Sides: ");
+            foreach (var s in t.GetSides())
+            {
+                Console.Write(s + ", ");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine(t.IsEquilateral() == true ? "Triangle IS Equilateral" : "Triangle IS NOT Equilateral");
+        
+            Console.WriteLine(t.IsIsosceles() == true ? "Triangle IS Isosceles" : "Triangle IS NOT Isosceles");
+        
+            Console.WriteLine(t.IsRight() == true ? "Triangle IS Right" : "Triangle IS NOT Right");
+        
+            Console.WriteLine("Perimeter is " + t.CalcPerimeter());
+        
+            t.EvenNumbers();
         }
 
 

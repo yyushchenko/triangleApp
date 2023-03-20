@@ -4,79 +4,61 @@ namespace TriangleApp;
 
 public class Triangle
 {
-    private Coordinate[] points;
-    private double[] sides;
-    private double delta;
+    private Coordinate[] _points;
+    private double[] _sides;
+    private double _delta;
 
     public Triangle(Coordinate[] points)
     {
-        this.points = points;
-        this.sides = new double[3];
-        this.delta = 0;
+        this._points = points;
+        this._sides = new double[3];
+        this._delta = 0;
 
         CalcTriangleSides();
+    }
+
+    public double[] GetSides()
+    {
+        return _sides;
     }
 
     //Use precision in calculations 
     public Triangle WithPrecision(double v)
     {
-        this.delta = v;
+        this._delta = v;
         return this;
-    }
-
-    public void Run()
-    {
-        
-        Console.Write("Sides: ");
-        foreach (var s in sides)
-        {
-            Console.Write(s + ", ");
-        }
-
-        Console.WriteLine();
-
-        Console.WriteLine(IsEquilateral() == true ? "Triangle IS Equilateral" : "Triangle IS NOT Equilateral");
-        
-        Console.WriteLine(IsIsosceles() == true ? "Triangle IS Isosceles" : "Triangle IS NOT Isosceles");
-        
-        Console.WriteLine(IsRight() == true ? "Triangle IS Right" : "Triangle IS NOT Right");
-        
-        Console.WriteLine("Perimeter is " + CalcPerimeter());
-        
-        EvenNumbers();
     }
 
     //Find all triangle sides
     private void CalcTriangleSides()
     {
-        for (int i = 0; i < points.Length; i++)
+        for (int i = 0; i < _points.Length; i++)
         {
-            Coordinate p1 = points[i];
+            Coordinate p1 = _points[i];
             Coordinate p2;
 
-            if (i < points.Length - 1)
+            if (i < _points.Length - 1)
             {
-                p2 = points[i + 1];
+                p2 = _points[i + 1];
             }
             else
             {
-                p2 = points[0];
+                p2 = _points[0];
             }
 
-            sides[i] = calcSide(p1, p2);
+            _sides[i] = CalcSide(p1, p2);
         }
     }
 
     //calculate triangle side 
-    private static double calcSide(Coordinate p1, Coordinate p2)
+    private static double CalcSide(Coordinate p1, Coordinate p2)
     {
         double side = Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
         if (side == 0)
         {
             throw new ArgumentException("Coordinates are not correct, side can't be 0");
-
         }
-        
+
         return side;
     }
 
@@ -85,15 +67,13 @@ public class Triangle
     {
         int longestIdx = 0;
         double max = 0;
-        for (int i = 0; i < sides.Length; i++)
+        for (int i = 0; i < _sides.Length; i++)
         {
-            if (sides[i] > max)
+            if (_sides[i] > max)
             {
-                max = sides[i];
-                longestIdx = i; 
-                
+                max = _sides[i];
+                longestIdx = i;
             }
-            
         }
 
         return longestIdx;
@@ -102,16 +82,15 @@ public class Triangle
     //find the index of the triangle first leg 
     private int Leg1Idx()
     {
-        double min = sides[0];
-        int leg1Idx = 0; 
-        for (int i = 0; i < sides.Length; i++)
+        double min = _sides[0];
+        int leg1Idx = 0;
+        for (int i = 0; i < _sides.Length; i++)
         {
-            if (sides[i] < min)
+            if (_sides[i] < min)
             {
-                min = sides[i];
+                min = _sides[i];
                 leg1Idx = i;
             }
-
         }
 
         return leg1Idx;
@@ -121,7 +100,7 @@ public class Triangle
     private int Leg2Idx(int firstIdx, int secondIdx)
     {
         int leg2Idx = 0;
-        for (int i = 0; i < sides.Length; i++)
+        for (int i = 0; i < _sides.Length; i++)
         {
             if (!i.Equals(firstIdx) && !i.Equals(secondIdx))
             {
@@ -132,46 +111,46 @@ public class Triangle
         return leg2Idx;
     }
 
-    private bool IsEquilateral()
+    public bool IsEquilateral()
     {
         double max = 0;
-        for (int i = 0; i < sides.Length; i++)
+        for (int i = 0; i < _sides.Length; i++)
         {
-            if (sides[i] > max)
+            if (_sides[i] > max)
             {
-                max = sides[i];
+                max = _sides[i];
             }
         }
 
-        return ((max - sides[0]) <= delta && (max - sides[1]) <= delta && (max - sides[2]) <= delta);
+        return ((max - _sides[0]) <= _delta && (max - _sides[1]) <= _delta && (max - _sides[2]) <= _delta);
     }
 
-    private bool IsIsosceles()
+    public bool IsIsosceles()
     {
         int longestIdx = LongestSideIdx();
-        int  leg1Idx = Leg1Idx();
+        int leg1Idx = Leg1Idx();
         int leg2Idx = Leg2Idx(longestIdx, leg1Idx);
 
 
-        if (sides[longestIdx] - sides[leg2Idx] <= delta || sides[leg2Idx]-sides[leg1Idx] <= delta)
+        if (_sides[longestIdx] - _sides[leg2Idx] <= _delta || _sides[leg2Idx] - _sides[leg1Idx] <= _delta)
         {
-            return true; 
+            return true;
         }
-    
-        return false; 
+
+        return false;
     }
 
-    private bool IsRight()
+    public bool IsRight()
     {
         int hypotenuseIdx = LongestSideIdx();
         int leg1Idx = Leg1Idx();
-        int leg2Idx = Leg2Idx(LongestSideIdx(),leg1Idx); 
-        
-        double hypotenuse = Math.Pow(sides[hypotenuseIdx], 2);
-        double legs = Math.Pow(sides[leg1Idx], 2) + Math.Pow(sides[leg2Idx], 2);
-        
-        if((hypotenuse - legs) <= delta && (hypotenuse - legs) > 0){
+        int leg2Idx = Leg2Idx(LongestSideIdx(), leg1Idx);
 
+        double hypotenuse = Math.Pow(_sides[hypotenuseIdx], 2);
+        double legs = Math.Pow(_sides[leg1Idx], 2) + Math.Pow(_sides[leg2Idx], 2);
+
+        if ((hypotenuse - legs) <= _delta && (hypotenuse - legs) > 0)
+        {
             return true;
         }
 
@@ -179,22 +158,22 @@ public class Triangle
         return false;
     }
 
-    private double CalcPerimeter()
+    public double CalcPerimeter()
     {
         double perimeter = 0;
-        for (int i = 0; i < sides.Length; i++)
+        for (int i = 0; i < _sides.Length; i++)
         {
-            perimeter += sides[i];
+            perimeter += _sides[i];
         }
 
         return perimeter;
     }
 
-    private void EvenNumbers()
+    public void EvenNumbers()
     {
         int perimeter = Convert.ToInt32(CalcPerimeter());
         int[] numbers = new int[perimeter];
-        
+
         for (int i = 0; i < numbers.Length; i++)
         {
             numbers[i] = i;
@@ -207,6 +186,5 @@ public class Triangle
                 Console.WriteLine(t);
             }
         }
-
     }
 }
